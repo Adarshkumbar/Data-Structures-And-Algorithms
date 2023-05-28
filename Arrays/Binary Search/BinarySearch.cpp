@@ -1,6 +1,7 @@
 // Points to Remember :
 // 1.Array Must be Sorted (Monotonic)
 // 2.Range of int is 2^31 - 1 (positive side and 2^32 in negative side)
+// 3.Time Complexity "O(logN)"
 
 #include<iostream>
 using namespace std;
