@@ -1,3 +1,5 @@
+// Performing xor operation on emts using array
+
 #include<iostream>
 #include<stdlib.h>
 
