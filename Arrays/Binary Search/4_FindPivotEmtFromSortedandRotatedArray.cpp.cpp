@@ -6,7 +6,7 @@
 #include<iostream>
 using namespace std;
 
-int MountainArray(int Arr[],int size){
+int Pivot(int Arr[],int size){
 
     int start = 0;
     int end = size-1;
@@ -28,6 +28,6 @@ int main (){
     //Array should be sorted and rotated
     // int Arr[] = { 0 , 10 , 50 , 2};     // o/p 3 
     int Arr[] = { 0,2,4,5,4,3,1 };  // o/p 6 (Arr,7)
-    int peak = MountainArray(Arr,7);
-    cout<< "Peak index  is : "<< peak << endl;
+    int pivot = Pivot(Arr,7);
+    cout<< "Peak index  is : "<< pivot << endl;
 }
