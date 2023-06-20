@@ -1,5 +1,5 @@
 // 1.Best and Worst time Complexity O(n^2)
-// 2.From index i = 0 to n-1 ....run another loop j from i+1 to n to find minIndex from array
+// 2.Loop From index i = 0 to n-1 ....run another loop j from i+1 to n to find minIndex from array
 
 #include<iostream>
 using namespace std;
@@ -23,7 +23,7 @@ int main()
     int arr[] = {12,33,1,4,77};
     int n = 5;
     selectionSort( arr, n );
-    cout<<"Array sorted using Selection Sort : \n"
+    cout<<"Array sorted using Selection Sort : \n";
     for( int i = 0 ; i < 5 ; i++)
     {
         cout << ' '<< arr[i]<< ' ';
