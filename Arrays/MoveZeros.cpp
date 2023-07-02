@@ -1,7 +1,7 @@
 // 1. move all 0's of array to end of array
 // i/p : { 1, 0, 0, 3, 5, 6, 0}
 // o/p : { 1, 3, 5, 6, 0, 0, 0}
-// 2.logic used is keep one nonZero variable shows end posi of nonZero emts like ....1,2,3,0,0 here nonZero= 2
+// 2.logic used is keep one nonZero variable shows end posi of nonZero emts like ....1,2,3,0,0 here nonZero= 3
 // just check for nonZero emt and swap Arr[i] with Arr[nonZero++] 
 
 #include<iostream>
@@ -11,13 +11,13 @@ using namespace std;
 
 void MoveZeros(int  arr[], int size){
     int nonZero = 0 ; // 0th index ....points to end position of non zero emts 
-    // cuz they will be present sucessively after every iteration ex:....1,2,3,0,0 here nonZero= 2
+    // cuz they will be present sucessively after every iteration ex:....1,2,3,0,0 here nonZero= 3
     for(int i = 0 ; i < size ; i++)
     {
         if( arr[i] != 0) // check for non zero emts
             swap( arr[i] , arr[nonZero++] ); // increment nonZero to point to new nonzero emts
     }
-
+    cout<< " nonZero = " << nonZero;
 }
 
 void Display(int * Arr, int size) {
