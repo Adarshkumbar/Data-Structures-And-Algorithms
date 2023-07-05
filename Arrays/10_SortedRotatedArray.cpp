@@ -1,4 +1,4 @@
-// 1. we need to check fo sorted rotate array 
+// 1. we need to check for sorted rotate array 
 // 2. Point: there can be only 0 or 1 pair such that Arr[i-1] > Arr[i]  cuz sorted
 // 3. Ex:{ 3, 4 , 1 , 2}  O/P : True cuz only 1 pair with Arr[i-1] > Arr[i] also rotating gives ....{1,2,3,4}
 
@@ -21,7 +21,7 @@ bool CheckSortedRotateArray(int * arr, int size){
     if(arr[size-1] > arr[0])  // last and first
             count++;
 
-    return count <=1;
+    return count <=1; // if count 0 or 1 true else false
     
 }
 
