@@ -2,8 +2,7 @@
 //  even though we visualise as n rows and m colums
 //  but stores in single memory like array
 #include<iostream>
-using namespace std;
-
+using namespace std; 
 
 // 1. funtion to SEARCH EMT IN 2D ARRAY
 bool searchEmt(int Arr[][3] , int k ,int row , int col){
@@ -70,7 +69,9 @@ void display(int Arr[][3] , int n , int m) // passing col is mandatory else comp
 
 int main(){
     int Arr[3][3];
-
+    
+      
+    cout<<"\nSize of array is:"<<vect.size()<<endl;
     //A. Taking inputs
     cout<<" Enter 3 * 3 emts"<<endl;
     for( int i = 0 ; i < 3 ; i++)
@@ -99,5 +100,5 @@ int main(){
 
     //F. Find Largest rowSum
     int rowIndex = largestRowSum(Arr, 3, 3);
-    cout<<rowIndex<<" row Largest sum";
+    cout<<rowIndex<<" row    Largest sum";
 }
