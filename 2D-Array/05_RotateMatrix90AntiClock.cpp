@@ -1,4 +1,9 @@
 //    Rotate Matrix ny 90 degree in Anti Clockwise
+// 1st step reverse each row of matrix 
+// 2md transpose the matrix ----> row -> col and col-> row
+
+//  since for each row we alter col no need to travel to last row i.e till n-2
+//  and j starts from i+1 cuz i,i already in correct posi
 
 class Solution
 {   
@@ -7,7 +12,7 @@ class Solution
     void rotateby90(vector<vector<int> >& matrix, int n) 
     { 
     //    1. rotate each row 
-    //    1. transpose the matrix
+    //    2. transpose the matrix
     
     
     //  reversing the rows 
