@@ -13,9 +13,11 @@ int arrSum( int *arr , int size){
     if( size == 1)
         return arr[0];
     
-    int remainingPart = arrSum ( arr+ 1 , size - 1);   // gets remaining part 
-    int sum = arr[0] + remainingPart ; 
-    return sum;
+    // int remainingPart = arrSum ( arr+ 1 , size - 1);   // gets remaining part 
+    // int sum = arr[0] + remainingPart ; 
+    //  return sum ; 
+    //          or 
+    return arr[0] + arrSum ( arr+ 1 , size - 1);
 }
 
 int main (){
