@@ -1,5 +1,4 @@
 //                  Multiply two strings
-
 /*
 Given two numbers as strings s1 and s2. Calculate their Product.
 
