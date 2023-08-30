@@ -13,9 +13,9 @@ bool BinarySearch(int arr[] , int s , int e , int key){
             return true; 
         
 //      Recursive call
-        if( arr[mid] < key)
+        if( arr[mid] < key)    // right part
             BinarySearch( arr , mid+1 , e , key);
-        else
+        else                   // left part
             BinarySearch( arr , s , mid-1 , key);
 }
 

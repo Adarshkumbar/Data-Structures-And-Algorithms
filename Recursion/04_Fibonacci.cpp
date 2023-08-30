@@ -10,7 +10,7 @@ class Solution {
         
         //  Base condition
         if( n == 0)
-            return 0;
+            return 0;           
         if( n == 1)
             return 1;
         int ans = ( nthFibonacci(n - 1) % mod + nthFibonacci(n - 2) % mod ) % mod;
