@@ -17,7 +17,7 @@ int BubbleSort(int * arr , int n ){
             if( alrSwapped == false)  // no swap cuz  alr sorted right? that's why we exit loop
                 break; 
     }
-}
+} 
 
 int main()
 {
