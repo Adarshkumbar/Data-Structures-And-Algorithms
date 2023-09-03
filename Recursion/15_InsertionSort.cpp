@@ -4,6 +4,8 @@ using namespace std;
 void InsertionSort( int arr[] , int pivot,int size){
     if( size == 0 || size == 1)
         return ;
+    if( arr[pivot] > arr[0])
+        
     
 }
 
