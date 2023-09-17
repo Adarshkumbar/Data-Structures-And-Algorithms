@@ -42,6 +42,7 @@ int main()
 {
 	int t;
 	cin >> t;
+// Partition Equal Subset Sum
 
 	// while (t--)
 	// {
