@@ -54,7 +54,7 @@ class Hero{
 
     //  Static Function -- no need an obj to use these and bnelongs to class
     static int random(){
-        return WinStreak;
+        return WinStreak;   // cant return non static variables
     }
     // DESTRUCTOR ... by default present or we can create one too
     ~Hero(){
