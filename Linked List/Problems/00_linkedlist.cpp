@@ -35,8 +35,11 @@ void insertAtEnd( Node * &tail, int data ){
 }
 //  INSERT AT POSI
 void insertAtPosi(Node * & head , int data , int posi){
-    if( posi == 1)
-        insertAtBeg(head, data);
+    if( posi == 1){
+         insertAtBeg(head, data);
+         return;
+    }
+       
 
     //  traverse to the posi
     int cnt = 1 ;
@@ -107,7 +110,7 @@ int main(){
     insertAtEnd( tail , 30);
     Print(head);
 //  INSERT AT POSI
-    // insertAtPosi(head,40 , 4);
+    insertAtPosi(head,40 , 1);
     // Print(head);
     cout<<"\nAFTER DELETE\n";
     deleteNode( head , 3 , tail); // tail passed to update if last node deleted

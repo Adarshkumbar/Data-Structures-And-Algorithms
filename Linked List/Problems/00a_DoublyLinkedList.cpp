@@ -1,0 +1,120 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        Node * left ;
+        Node * right ;
+        int data ;
+    Node(int data ){
+        this ->data = data;
+        this ->left = NULL;
+        this ->right = NULL;
+    }
+};
+// ------------------------------------------------- INSERTION ---------------------------------------------------------------
+void insertAtBeg( Node * &head , Node * &tail , int data ){
+    if( head == NULL){
+        Node * newNode = new Node( data );
+        head = tail = newNode;
+    }
+    else{
+        Node * newNode = new Node(data);
+        newNode ->right = head;
+        head -> left = newNode;
+        head = newNode;
+    }
+}
+void insertAtEnd( Node * &head , Node * &tail , int data ){
+    if( head == NULL){
+        Node * newNode = new Node( data );
+        head = tail = newNode;
+    }
+    else{
+        Node * newNode = new Node( data );
+        tail -> right = newNode ;
+        newNode ->left = tail;
+        tail = newNode;
+    }
+}
+void insertAtPosition(Node * &head , Node * &tail , int data , int posi ){
+     if( head == NULL){
+        Node * newNode = new Node( data );
+        head = tail = newNode;
+        return;
+    }
+    if( posi == 1){
+        insertAtBeg(head, tail , data);
+        return ;
+    }
+    Node * newNode = new Node(data);
+    //  for traversal
+    Node * temp = head;
+    int cnt = 1;
+    while(cnt < posi - 1){
+        temp = temp ->right;
+        cnt++;
+    }
+    //  checking if we need to insert at end
+    if( temp ->right == NULL){
+        insertAtEnd( head , tail , data);
+        return;
+    }
+    newNode ->right = temp ->right;
+    newNode ->left = temp;
+    temp ->right->left = newNode ;
+    temp->right = newNode;
+}
+
+// ------------------------------------------------- DELETION ---------------------------------------------------------------
+void deleteNode( Node * &head , int posi ){
+    if( head == NULL)
+        return ;
+    if( posi == 1){
+        Node * temp = head ;
+        head = head -> right;
+        temp ->right = NULL;
+        delete temp;
+    }
+
+}
+
+
+void Print( Node * & head)
+{
+    Node * temp = head;
+
+    while( temp != NULL){
+        cout<<temp->data<<" ";
+        temp = temp ->right;
+    }
+    cout<<"\n";
+}
+int main(){
+    Node * head = NULL;
+    Node * tail = NULL;
+//  INSERT AT BEGINNING
+    insertAtBeg(head , tail , 10);
+    insertAtBeg(head , tail , 20);
+    insertAtBeg(head , tail , 30);
+    Print(head);
+    cout<<" \n";
+
+// INSERT AT END
+
+    // insertAtEnd(head , tail , 550);
+    // insertAtEnd(head , tail , 660);
+    // cout<<" tail is : "<< tail->data << endl;
+    // Print(head);
+
+// INSERT AT POSITION
+    // insertAtPosition(head, tail , 1111, 6);
+    // Print(head);
+    insertAtPosition(head, tail , 1, 1);        // 1st posi
+    Print(head);
+    insertAtPosition(head, tail , 1111, 5);   //last posi
+    Print(head);
+      insertAtPosition(head, tail , 69, 3);   //middle
+    Print(head);
+    // cout<<"head is :"<< head->data;
+}
