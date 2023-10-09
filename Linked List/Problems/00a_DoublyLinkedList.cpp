@@ -11,6 +11,14 @@ class Node{
         this ->left = NULL;
         this ->right = NULL;
     }
+    ~Node(){
+        int val = this -> data;
+        if( this ->right != NULL){
+            delete right;
+            this->right = NULL;
+        }
+        cout<<" \n "<<val <<" has been deleted"<<endl;
+    }
 };
 // ------------------------------------------------- INSERTION ---------------------------------------------------------------
 void insertAtBeg( Node * &head , Node * &tail , int data ){
@@ -67,7 +75,7 @@ void insertAtPosition(Node * &head , Node * &tail , int data , int posi ){
 }
 
 // ------------------------------------------------- DELETION ---------------------------------------------------------------
-void deleteNode( Node * &head , int posi ){
+void deleteNode( Node * &head , Node * & tail,int posi ){
     if( head == NULL)
         return ;
     if( posi == 1){
@@ -75,8 +83,28 @@ void deleteNode( Node * &head , int posi ){
         head = head -> right;
         temp ->right = NULL;
         delete temp;
+        return ;
     }
-
+    int cnt = 1 ;
+    Node * cur= head;
+    Node * prev = NULL;
+    while( cnt < posi ){
+        prev = cur;
+        cur = cur->right;
+        cnt++;
+    }
+    //  updating tail before deleting last node
+    if( cur ->right == NULL){
+        tail = prev;
+        tail -> right = NULL;
+        cur -> left = NULL ;
+        delete cur;
+        return;
+    }
+    prev -> right = cur -> right;
+    cur ->right ->left = prev;
+    cur -> left = cur -> right = NULL;
+    delete cur;
 }
 
 
@@ -117,4 +145,17 @@ int main(){
       insertAtPosition(head, tail , 69, 3);   //middle
     Print(head);
     // cout<<"head is :"<< head->data;
+    cout<<" AFTER DELETE "<< endl;
+    //  deleting tail
+    deleteNode(head, tail , 6);
+    Print(head);
+    cout<<"\n Tail : "<< tail -> data;
+
+    //  deleting head
+    deleteNode(head, tail , 1);
+    Print(head);
+
+    //  deleting in between
+    deleteNode(head, tail , 3);
+    Print(head);
 }
