@@ -1,25 +1,7 @@
-/*                              Reverse a linked list
-// easy
-Given a linked list of N nodes. The task is to reverse this list.
+//                          Reverse Linked List Using RECURSION
+//  easy
 
-Example 1:
 
-Input:
-LinkedList: 1->2->3->4->5->6
-Output: 6 5 4 3 2 1
-Explanation: After reversing the list, 
-elements are 6->5->4->3->2->1.
-Example 2:
-
-Input:
-LinkedList: 2->7->8->9->10
-Output: 10 9 8 7 2
-Explanation: After reversing the list,
-elements are 10->9->8->7->2.
-*/
-
-//{ Driver Code Starts
-//Initial Template for C++// C program to find n'th Node in linked list
 #include <stdio.h>
 #include <stdlib.h>
 #include<iostream>
@@ -45,33 +27,52 @@ struct Node {
 
 class Solution
 {
+// APRROACH 1
+/*
+    void Solve( Node * &head , Node * prev , Node * cur){
+        //  Base case
+        if( cur == NULL){
+            head = prev;
+            return;
+        }
+        //  To Store the List
+        Node * forward = cur ->next;
+        //  recursive call
+        Solve( head,cur , forward );
+        cur ->next = prev;
+    }   
+*/
+// APRROACH 2
+        Node * Solve( Node * head){
+        //  Base case
+        if( head == NULL || head -> next == NULL){
+            return head;
+        }
+        //  SmallHead will be head of small list which is reversed by recursion
+        Node * smallHead = Solve ( head ->next); 
+        //  solving one condi rest solved by recursion
+        head ->next ->next = head;
+        head ->next = NULL;
+        return smallHead;
+    }   
+
     public:
     //Function to reverse a linked list.
     struct Node* reverseList(struct Node *head)
     {
-        if( head == NULL || head->next == NULL){
-            return head;
-        }
-        Node * prev = NULL;
         Node * cur = head;
-        Node * forward = NULL;
-        
-        while( cur !=NULL){
-            forward = cur->next; // so that we wont lose the list
-            cur ->next = prev ; // pointing cur to prev
-            prev = cur ;        
-            cur = forward;
-        }
-        //  after cur becomes NULL 
-        //  prev will be pointing to last node so
-        return prev;
+        Node *prev =NULL;
+
+ // for 1st approach
+        // Solve( head, prev, cur);  
+        // return head;
+
+//  for 2nd approach
+        return Solve(head);
     }
     
 };
     
-
-
-//{ Driver Code Starts.
 
 void printList(struct Node *head)
 {
@@ -83,7 +84,7 @@ void printList(struct Node *head)
     }
 }
 
-/* Driver program to test above function*/
+
 int main()
 {
     int n,l,firstdata;
@@ -116,6 +117,3 @@ int main()
     
     return 0;
 }
-
-
-// } Driver Code Ends

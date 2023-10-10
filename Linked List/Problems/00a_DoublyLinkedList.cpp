@@ -106,7 +106,22 @@ void deleteNode( Node * &head , Node * & tail,int posi ){
     cur -> left = cur -> right = NULL;
     delete cur;
 }
+// ------------------------------------REVERSE ---------------------------------------------------------
 
+Node * reverseList( Node * head){
+    // BASE CASE
+    if( head->right == NULL ){
+        return head;
+    }
+    //  revursive call to rev and return head of that rev list
+    Node * smallHead = reverseList(head->right);
+    //  updating small lists last node
+    head ->right -> right = head;
+    head->left = head ->right;
+    head ->right = NULL;
+   
+   return smallHead;
+}
 
 void Print( Node * & head)
 {
@@ -145,7 +160,9 @@ int main(){
       insertAtPosition(head, tail , 69, 3);   //middle
     Print(head);
     // cout<<"head is :"<< head->data;
-    cout<<" AFTER DELETE "<< endl;
+
+//------------------- cout<<" AFTER DELETE "<< endl;---------------------------
+/*
     //  deleting tail
     deleteNode(head, tail , 6);
     Print(head);
@@ -157,5 +174,9 @@ int main(){
 
     //  deleting in between
     deleteNode(head, tail , 3);
+    Print(head);
+*/ 
+//      REVERSING LINKED LIST
+    head = reverseList(head);
     Print(head);
 }
