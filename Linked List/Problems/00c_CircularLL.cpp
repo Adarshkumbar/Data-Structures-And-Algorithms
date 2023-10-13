@@ -2,7 +2,7 @@
 //  emt which is already present in a list .....we place "input" after the emt
 #include<iostream>
 using namespace std;
-
+#include<map>
 class Node{
     public:
         int data;
@@ -66,6 +66,57 @@ void deleteNode( Node * & tail , int val){
     }
   
 }
+// ----------------------------------------- Check loop ----------------------------------------------------------------
+// APPROACH - 1
+bool checkLoop(Node * head){
+    if( head == NULL)
+        return false;
+    Node * temp = head;
+    //  keeping map to keep track of visited Nodes
+
+    map < Node * , bool> visited;
+
+    while( temp != NULL){
+        if( visited[temp] == true){
+            cout<<"Start of  cycle at "<< temp->next ->data;
+             return true;
+        }
+           
+        visited[temp] = true;   // marking node true
+        temp = temp ->next;
+    }
+    return false;
+}
+// APPROACH - 2 
+Node * floyd (Node * head){
+    if( head == NULL)
+        return head;
+    Node * fast = head;
+    Node * slow = head;
+
+    while( fast != NULL && slow != NULL){
+        fast = fast -> next ;        // 1x 
+        if( fast != NULL)           //  2x
+            fast = fast ->next ;
+        slow = slow ->next ;         // 1x for slow
+
+        if( fast == slow)
+            return slow;
+    }
+    return NULL;
+}
+Node * startOfCycle( Node * head ){ // A + B = C i.e  C is distance of loop and A distance till start .B is From A till fast == slow
+    //  now assigning slow to head and move both fast  and slow at 1x till they reach .... the reaching point will be Start/ beg of cycle
+    Node * fast = floyd( head ); // this is also point of intersection
+    Node * slow = head;
+
+    while(fast != slow){
+        fast = fast ->next;
+        slow = slow ->next;
+    }
+    return slow;
+}
+
 
 void Print(Node * &tail){
     if( tail == NULL || tail->next ==NULL ){
@@ -100,7 +151,7 @@ int main(){
     Print( tail);
 
     // DELETION
-   
+   /*
     deleteNode(tail , 10);
     Print(tail);
     cout<<"tail :"<<tail->data;
@@ -120,5 +171,13 @@ int main(){
     
     deleteNode(tail ,30);
     Print(tail);
+    */
     // cout<<"tail :"<<tail->data;
+
+//  CHECK FOR LOOP
+    (checkLoop( tail)) ? cout <<"\nLOOP IS PRESENT \n" : cout<<"\nLOOP  ABSENT \n";
+
+    (floyd( tail)) ? cout <<"\nLOOP IS PRESENT \n" : cout<<"\nLOOP  ABSENT \n";
+
+    cout<<"\nStart of cycle = "<<startOfCycle(tail)->data;
 }

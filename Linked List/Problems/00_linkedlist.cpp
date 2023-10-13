@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+#include<map>
 class Node{
     public:
         int data;
@@ -87,6 +87,71 @@ void deleteNode( Node * &head , int posi , Node * &tail){
         delete cur;
     }
 }
+// ----------------------------------------- Check loop ----------------------------------------------------------------
+// APPROACH - 1
+bool checkLoop(Node * head){
+    if( head == NULL)
+        return false;
+    Node * temp = head;
+    //  keeping map to keep track of visited Nodes
+
+    map < Node * , bool> visited;
+
+    while( temp != NULL){
+        if( visited[temp] == true)
+            return true;
+        visited[temp] = true;   // marking node true
+        temp = temp ->next;
+    }
+    return false;
+}
+// APPROACH - 2 
+Node * floyd (Node * head){
+    if( head == NULL)
+        return head;
+    Node * fast = head;
+    Node * slow = head;
+
+    while( fast != NULL && slow != NULL){
+        fast = fast -> next ;        // 1x 
+        if( fast != NULL)           //  2x
+            fast = fast ->next ;
+        slow = slow ->next ;         // 1x for slow
+
+        if( fast == slow)
+            return slow;
+    }
+    return NULL;
+}
+// ----------------------------------------- Remove DUPLICATE IN UNSORTED LIST --------------------------------------------------
+
+void removeDuplicate( Node *&head){
+    if ( head == NULL)
+        return ;
+    Node * cur = head;
+    Node * temp = head -> next;
+
+    while( cur != NULL){
+        while( temp != NULL)
+        {
+            if( temp == NULL && cur -> next != NULL )
+                temp = cur -> next;
+            if( temp -> data == cur -> data ){
+                Node * toDel = temp;
+                temp = temp -> next;
+                toDel ->next = NULL;
+                delete toDel;
+                if( cur -> next == NULL)
+                    cur ->next = temp;
+                continue;
+            }
+            temp = temp -> next;
+        }
+        if( cur ->next == NULL)
+            return ;
+        cur = cur ->next;
+    }
+}
 
 void Print(Node * &head){
     Node * temp = head ;
@@ -107,7 +172,7 @@ int main(){
     
 //  INSERT AT END
     insertAtEnd( tail , 20);
-    insertAtEnd( tail , 30);
+    insertAtEnd( tail , 10);
     Print(head);
 //  INSERT AT POSI
     insertAtPosi(head,40 , 1);
@@ -116,4 +181,12 @@ int main(){
     deleteNode( head , 3 , tail); // tail passed to update if last node deleted
     Print(head);
     cout<<" TAIL IS :" << tail ->data;
+
+    //  CHECK FOR LOOP
+    (checkLoop( head)) ? cout <<"\nLOOP IS PRESENT \n" : cout<<"\nLOOP  ABSENT \n";
+  
+    (floyd( tail)) ? cout <<"\nLOOP IS PRESENT \n" : cout<<"\nLOOP  ABSENT \n";
+
+    removeDuplicate(head);
+    Print( head);
 }
