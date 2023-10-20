@@ -60,7 +60,7 @@ struct Node {
 };
 
 
-
+//----------------------------------------------------------------------------------------------------------------------------------
 // } Driver Code Ends
 class Solution
 {
@@ -84,6 +84,9 @@ class Solution
         
     }
     
+  //----------------------------------------------------------------------------------------------------------------------------------  
+//  APPROACH - 1 USING MAP 
+/*
     Node *copyList(Node *head)
     {
         // Step - 1 Clone Simple Linked list As Original list A-> B -> C.....
@@ -118,9 +121,74 @@ class Solution
         }
         return copyHead;
     }
-
+*/
+//----------------------------------------------------------------------------------------------------------------------------------
+//  APPROACH - 2 by changing links ⬇️↗️⬇️↗️⬇️↗️
+    Node *copyList(Node *head){
+        // Step 1 - Creating Copy list
+        Node * copyHead = NULL;
+        Node * copyTail = NULL;
+        
+        createList( head , copyHead , copyTail);
+        
+        // Step 2 - Adding Clone Nodes in Between Original LIst  like ⬇️↗️⬇️↗️⬇️↗️
+        Node * originalNode = head;  // used to traverse list
+        Node * copyNode = copyHead;  // used to traverse list
+        
+        while( originalNode != NULL){
+            //  For originalNode
+            Node * temp = originalNode -> next ; // stores original list 
+            originalNode -> next = copyNode;    // ⬇️
+            originalNode = temp ; // moving originalNode
+            
+            //  For copyNode
+            temp = copyNode -> next ; // stores original list 
+            copyNode -> next = originalNode ; 
+            copyNode = temp ;
+        }
+        
+        //  Step - 3 Node assigning Random( arb ) pointer of Clonenode to its respective CloneNode
+        originalNode = head;  // used to traverse list
+        copyNode = copyHead;  // used to traverse list
+        
+        while( originalNode != NULL ){
+            if( originalNode -> arb != NULL)
+                copyNode -> arb = (originalNode -> arb )-> next ; //assign copyNode -> random
+            else
+                copyNode -> arb = NULL;
+            //  moving originalNode And copyNodes
+            originalNode = copyNode -> next ;
+            if ( originalNode != NULL)
+                copyNode = originalNode -> next ;
+            else{
+                copyNode -> next  = NULL;
+                copyNode = NULL;
+            }
+                
+        }
+        // Step -4 revert Step - 2  i.e links formed 
+        originalNode = head;  // used to traverse list
+        copyNode = copyHead;    
+        
+        while( originalNode != NULL){
+            //  FOR ORIGINAL NODE 
+            originalNode -> next = copyNode -> next ;  // assing next ptr
+            originalNode =  copyNode -> next ;          // move originalNode to next posi
+            
+            //  FOR COPY NODE 
+            if( originalNode != NULL){
+                copyNode -> next = originalNode -> next ;
+                copyNode = originalNode -> next ;
+            }
+            else{
+                copyNode ->next = NULL;
+                copyNode = NULL;
+            }
+        }
+        return copyHead;
+    }
 };
-
+//----------------------------------------------------------------------------------------------------------------------------------
 //{ Driver Code Starts.
 
 
