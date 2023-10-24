@@ -33,6 +33,14 @@ None of the students can find a classmate who has
 a higher roll number and less marks than them.
 */
 
+// approach ;
+    //  1. loop from n-1 to 0 and "curr" = arr[i] .... i.e from last to 1st
+    //  2. create stack and push -1 cuz last emt will have -1 as small emt
+    //  3. create ans vector with n size
+    //  4. for each iteration check if curr > stk.top() ..... cuz we need smaller emt
+    //      yes-> ans[i] = stk.top() ; stk.push(curr);
+    //      no -> pop stack till curr < stk.top() or stk.top( ) == -1 after loop  ans[i] = stk.top() ; stk.push(curr);
+    // 5 . return ans
 #include <bits/stdc++.h> 
 using namespace std; 
 
