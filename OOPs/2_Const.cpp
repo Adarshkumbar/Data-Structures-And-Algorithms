@@ -12,5 +12,6 @@ int main(){
     cout<<* ptr << " " << x << endl;
 
     ptr = & x; 
-       cout<<* ptr << " " << x << endl;
+    x = 12;
+    cout<<* ptr << " " << x << endl;
 }
