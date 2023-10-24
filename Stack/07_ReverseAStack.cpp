@@ -1,5 +1,5 @@
 //                          Reverse a Stack  
-//  easy / medium  -- Using Recursion
+//  easy / medium  -- Using Recu
 
 /*
 You are given a stack St. You have to reverse the stack using recursion.

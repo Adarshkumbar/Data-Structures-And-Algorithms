@@ -1,5 +1,5 @@
 //              Parenthesis Checker
-//  easy        solved using recursion
+//  easy        
 /*
 
 Example 1:
