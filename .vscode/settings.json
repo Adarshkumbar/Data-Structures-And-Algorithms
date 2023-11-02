@@ -58,7 +58,16 @@
     "utility": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "codecvt": "cpp",
+    "cuchar": "cpp",
+    "algorithm": "cpp",
+    "iterator": "cpp",
+    "map": "cpp",
+    "memory": "cpp",
+    "memory_resource": "cpp",
+    "set": "cpp",
+    "shared_mutex": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "C_Cpp_Runner.cCompilerPath": "gcc",
