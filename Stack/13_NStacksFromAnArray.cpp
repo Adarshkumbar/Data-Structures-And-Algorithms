@@ -67,7 +67,7 @@ class NStack{
             int index = top[m-1];
 
             //  Step -2 ;
-            top[ m -1] = index ;
+            next[ m -1] = index ;
 
             //  Step - 3
             next[index] = freeSpace ;
