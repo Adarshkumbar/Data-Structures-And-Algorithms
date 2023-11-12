@@ -75,6 +75,4 @@ int main(){
     Solution obj;
     int res = obj.distributeTicket(N, K);
     cout<<res<<endl;
-        
-
 }
